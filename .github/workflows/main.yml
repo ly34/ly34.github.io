@@ -33,6 +33,7 @@ jobs:
           COMMENT=$(echo "${{ github.event.comment.body }}")
           NO_TAGS=${COMMENT//[<>]/\`}
           FOLDER=comments
+          mkdir $FOLDER
           printf '%b\n' "<div class=\"comment\"><p>${AUTHOR} says:</p><p>${NO_TAGS//$'\n'/\<\/p\>\<p\>}</p><p>${DATE}</p></div>\r\n" > ${FOLDER}/${ID}.html
 
       - name: Assemble page
