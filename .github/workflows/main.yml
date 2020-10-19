@@ -54,4 +54,5 @@ jobs:
           git add .
           git status
           git commit -am "Add new comment"
-          git push ${REMOTE} master
+          # git push ${REMOTE} master
+          git push origin master
