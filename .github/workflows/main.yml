@@ -6,7 +6,7 @@ name: issue2post
 # events but only for the main branch
 on:
   issues:
-    types: [opened]
+    types: [opened, edited, labeled]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
