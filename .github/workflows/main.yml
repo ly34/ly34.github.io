@@ -38,6 +38,7 @@ jobs:
       - name: Assemble page
         run: |
           cat header.html > index.html
+          ls comments
           find comments/ -name "*.html" | sort -r | xargs -I % cat % >> index.html
           cat footer.html >> index.html
             
