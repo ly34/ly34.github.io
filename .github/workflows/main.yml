@@ -32,14 +32,14 @@ jobs:
           COMMENT=$(echo "${{ github.event.comment.body }}")
           NO_TAGS=${COMMENT//[<>]/\`}
           FOLDER=_posts
-          mkdir $FOLDER
-          printf '%b\n' "<div class=\"comment\"><p>${AUTHOR} says:</p><p>${NO_TAGS//$'\n'/\<\/p\>\<p\>}</p><p>${DATE}</p></div>\r\n" > ${FOLDER}/${ID}.md
 
-      - name: Assemble page
-        run: |
-          # cat header.md > index.md
-          find _posts/ -name "*.md" | sort -r | xargs -I % cat % >> index.md
-          # cat footer.md >> index.md
+          printf '%b\n' "${DATE}\r\n${COMMENT}\r\n" > ${FOLDER}/${ID}.html
+
+      #   - name: Assemble page
+      #     run: |
+      #       # cat header.md > index.md
+      #       find _posts/ -name "*.md" | sort -r | xargs -I % cat % >> index.md
+      #       # cat footer.md >> index.md
 
       - name: Push changes to repo
         run: |
