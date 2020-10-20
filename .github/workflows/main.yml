@@ -34,7 +34,7 @@ jobs:
           TITLE=${ID//[<>]/\`}
           FOLDER=_posts
 
-          printf '%b\n' "${DATE}\r\n${NO_TAGS}\r\n" > ${FOLDER}/${TITLE}.md
+          printf '%b\n' "${DATE}\r\n${NO_TAGS}\r\n" > ${FOLDER}/index.md
 
       #   - name: Assemble page
       #     run: |
