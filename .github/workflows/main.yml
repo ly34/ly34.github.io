@@ -16,8 +16,9 @@ jobs:
       - name: $github
         # run: echo "$GITHUB_CONTEXT"
         run: |
-          CONTENT=${{ github.event.comment.title }}
-          echo "$CONTENT"
+          echo "s----"
+          echo ${{ github.event.comment.body }}
+          echo "e----"
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
     # This workflow contains a single job called "build"
