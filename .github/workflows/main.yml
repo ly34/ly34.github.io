@@ -9,13 +9,13 @@ on:
     types: [opened, edited, labeled]
 
 jobs:
-    dump:
-        runs-on: ubuntu-latest
-        steps:
-        - name: $github
-        run:   echo "$GITHUB_CONTEXT"
-        env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+    - name: $github
+    run:   echo "$GITHUB_CONTEXT"
+    env:
+    GITHUB_CONTEXT: ${{ toJson(github) }}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
