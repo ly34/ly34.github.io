@@ -24,6 +24,9 @@ jobs:
       - name: create md file
         run: echo ${{ github.event.comment.body }}
 
+      - name: echo content
+      - run: echo ${{ github.event.comment.body }}
+
       - name: Turn comment into file
         run: |
           ID=${{ github.event.comment.title }}
@@ -34,7 +37,7 @@ jobs:
           TITLE=${ID//[<>]/\`}
           FOLDER=_posts
 
-          printf '%b\n' "${DATE}\r\n${NO_TAGS}\r\n" > ${FOLDER}/index.md
+          printf '%b\n' "${DATE}\r\n ${{ github.event.comment.body }} \r\n" > ${FOLDER}/index.md
 
       #   - name: Assemble page
       #     run: |
