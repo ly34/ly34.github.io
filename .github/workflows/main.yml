@@ -38,7 +38,7 @@ jobs:
       - name: Assemble page
         run: |
           # cat header.md > index.md
-          find $FOLDER/ -name "*.md" | sort -r | xargs -I % cat % >> index.md
+          find _posts/ -name "*.md" | sort -r | xargs -I % cat % >> index.md
           # cat footer.md >> index.md
 
       - name: Push changes to repo
