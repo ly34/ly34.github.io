@@ -24,9 +24,6 @@ jobs:
       - name: create md file
         run: echo ${{ github.event.comment.body }}
 
-      - name: echo content
-      - run: echo ${{ github.event.comment.body }}
-
       - name: Turn comment into file
         run: |
           ID=${{ github.event.comment.title }}
