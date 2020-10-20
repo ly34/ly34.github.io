@@ -31,9 +31,10 @@ jobs:
           DATE=${{ github.event.comment.created_at }}
           COMMENT=$(echo "${{ github.event.comment.body }}")
           NO_TAGS=${COMMENT//[<>]/\`}
+          TITLE=${ID//[<>]/\`}
           FOLDER=_posts
 
-          printf '%b\n' "${DATE}\r\n${COMMENT}\r\n" > ${FOLDER}/${ID}.html
+          printf '%b\n' "${DATE}\r\n${NO_TAGS}\r\n" > ${FOLDER}/${TITLE}.md
 
       #   - name: Assemble page
       #     run: |
