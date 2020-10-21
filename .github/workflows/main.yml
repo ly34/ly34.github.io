@@ -22,12 +22,12 @@ jobs:
       - uses: actions/checkout@v2
       - name: Turn comment into file
         run: |
-          TITLE=${{ github.event.issue.title }}
-          AUTHOR=${{ github.event.issue.user.login }}
-          DATE=${{ github.event.issue.created_at }}
+          TITLE="${{ github.event.issue.title }}"
+          AUTHOR="${{ github.event.issue.user.login }}"
+          DATE="${{ github.event.issue.created_at }}"
           BODY="${{ github.event.issue.body }}"
           FOLDER=_posts
-          printf "%s" "layout: post\r\n title: $TITLE\r\n date: $DATE\r\n $BODY" > ${FOLDER}/${TITLE}.md
+          printf "%b\n" "layout: post\r\n title: $TITLE\r\n date: $DATE\r\n $BODY" > ${FOLDER}/${TITLE}.md
 
       - name: Push changes to repo
         run: |
