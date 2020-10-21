@@ -28,7 +28,7 @@ jobs:
           NO_TAGS=${COMMENT//[<>]/\`}
           FOLDER=_posts
 
-          printf '%b' "${DATE}\r\n ${{ github.event.issue.body }}" > ${FOLDER}/${ID}.md
+          printf "${{ github.event.issue.body }}" > ${FOLDER}/${ID}.md
 
       - name: Push changes to repo
         run: |
