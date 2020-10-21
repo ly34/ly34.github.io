@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Turn comment into file
         run: |
-          echo "${{ github.event.issue.body }}"
+          echo ${{ github.event.issue.body }}
           ID=${{ github.event.issue.title }}
           AUTHOR=${{ github.event.issue.user.login }}
           DATE=${{ github.event.issue.created_at }}
@@ -30,7 +30,7 @@ jobs:
           NO_TAGS=${COMMENT//[<>]/\`}
           FOLDER=_posts
 
-          printf '%b\n' "$COMMENT" > ${FOLDER}/${ID}.md
+          printf '%b\n' ${{ github.event.issue.body }} > ${FOLDER}/${ID}.md
 
       - name: Push changes to repo
         run: |
