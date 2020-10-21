@@ -17,7 +17,7 @@ jobs:
         # run: echo "$GITHUB_CONTEXT"
         run: |
           echo "s----"
-          echo ${{ github.event.comment.body }}
+          echo "${{ github.event.comment.body }}" 
           echo "e----"
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
