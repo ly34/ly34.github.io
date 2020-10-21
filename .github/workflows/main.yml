@@ -17,7 +17,7 @@ jobs:
         # run: echo "$GITHUB_CONTEXT"
         run: |
           echo "s----"
-          echo "${{ github.event.comment.body }}" 
+          echo "${{ github.event.issue.body }}" 
           echo "e----"
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
@@ -33,19 +33,19 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: create md file
-        run: echo ${{ github.event.comment.body }}
+        run: echo ${{ github.event.issue.body }}
 
       - name: Turn comment into file
         run: |
-          ID=${{ github.event.comment.title }}
-          AUTHOR=${{ github.event.comment.user.login }}
-          DATE=${{ github.event.comment.created_at }}
-          COMMENT=$(echo "${{ github.event.comment.body }}")
+          ID=${{ github.event.issue.title }}
+          AUTHOR=${{ github.event.issue.user.login }}
+          DATE=${{ github.event.issue.created_at }}
+          COMMENT=$(echo "${{ github.event.issue.body }}")
           NO_TAGS=${COMMENT//[<>]/\`}
           TITLE=${ID//[<>]/\`}
           FOLDER=_posts
 
-          printf '%b\n' "${DATE}\r\n ${{ github.event.comment.body }} \r\n" > ${FOLDER}/index.md
+          printf '%b\n' "${DATE}\r\n ${{ github.event.issue.body }} \r\n" > ${FOLDER}/index.md
 
       # - name: Assemble page
       #   run: |
