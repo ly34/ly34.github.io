@@ -30,11 +30,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      # Runs a single command using the runners shell
-      - name: create md file
-        run: echo ${{ github.event.issue.body }}
-
       - name: Turn comment into file
         run: |
           ID=${{ github.event.issue.title }}
@@ -44,8 +39,7 @@ jobs:
           NO_TAGS=${COMMENT//[<>]/\`}
           TITLE=${ID//[<>]/\`}
           FOLDER=_posts
-
-          printf '%b\n' "${DATE}\r\n ${{ github.event.issue.body }} \r\n" > ${FOLDER}/index.md
+          printf '%b\n' "${DATE}\r\n ${{ github.event.issue.body }} \r\n" > ${FOLDER}/${ID}.md
 
       # - name: Assemble page
       #   run: |
