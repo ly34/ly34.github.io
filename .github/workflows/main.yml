@@ -27,7 +27,7 @@ jobs:
           NO_TAGS=${COMMENT//[<>]/\`}
           FOLDER=_posts
 
-          printf '%b\n' "${DATE}\r\n ${COMMENT}" > ${FOLDER}/${ID}.md
+          printf '%b' "${DATE}\r\n ${COMMENT}" > ${FOLDER}/${ID}.md
 
       - name: Push changes to repo
         run: |
