@@ -25,11 +25,11 @@ jobs:
           ID=${{ github.event.issue.title }}
           AUTHOR=${{ github.event.issue.user.login }}
           DATE=${{ github.event.issue.created_at }}
-          COMMENT=$(echo "${{ github.event.issue.body }}")
+          COMMENT="${{ github.event.issue.body }}"
           NO_TAGS=${COMMENT//[<>]/\`}
           FOLDER=_posts
 
-          printf '%s\n' "$COMMENT" > ${FOLDER}/${ID}.md
+          printf '%b\n' "$COMMENT" > ${FOLDER}/${ID}.md
 
       - name: Push changes to repo
         run: |
