@@ -25,7 +25,7 @@ jobs:
           DATE=${{ github.event.issue.created_at }}
           BODY=$(echo "${{ github.event.issue.body }}")
           FOLDER=_posts
-          echo "${{ github.event.issue.body }}" > ${FOLDER}/${TITLE}.md
+          printf "${{ github.event.issue.body }}" > ${FOLDER}/${TITLE}.md
 
       - name: Push changes to repo
         run: |
