@@ -29,7 +29,7 @@ jobs:
           FOLDER=_posts
 
           # printf "${{ github.event.issue.body }}" > ${FOLDER}/${ID}.md
-          echo -e "${{ github.event.issue.body }}" > ${FOLDER}/${ID}.md
+          echo -e "$COMMENT" > ${FOLDER}/${ID}.md
 
       - name: Push changes to repo
         run: |
