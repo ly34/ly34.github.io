@@ -23,11 +23,10 @@ jobs:
       - name: Turn comment into file
         run: |
           TITLE="${{ github.event.issue.title }}"
-          AUTHOR="${{ github.event.issue.user.login }}"
           DATE="${{ github.event.issue.created_at }}"
           BODY="${{ github.event.issue.body }}"
           FOLDER=_posts
-          printf "%b\n" "layout: post\r\n title: $TITLE\r\n date: $DATE\r\n $BODY" > ${FOLDER}/${TITLE}.md
+          printf "%b\n" "layout: post\r\n title: $TITLE\r\n date: ${{ github.event.issue.created_at }}\r\n ${{ github.event.issue.body }}" > ${FOLDER}/${TITLE}.md
 
       - name: Push changes to repo
         run: |
