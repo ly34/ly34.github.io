@@ -1,3 +1,4 @@
+# https://www.freecodecamp.org/news/publishing-github-event-data-with-github-actions-and-pages/
 # This is a basic workflow to help you get started with Actions
 
 name: issue2post
@@ -27,7 +28,7 @@ jobs:
           NO_TAGS=${COMMENT//[<>]/\`}
           FOLDER=_posts
 
-          printf '%b' "${DATE}\r\n ${COMMENT}" > ${FOLDER}/${ID}.md
+          printf '%b' "${DATE}\r\n ${{ github.event.issue.body }}" > ${FOLDER}/${ID}.md
 
       - name: Push changes to repo
         run: |
