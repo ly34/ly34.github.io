@@ -25,12 +25,11 @@ jobs:
           TITLE="${{ github.event.issue.title }}"
           DATE="${{ github.event.issue.created_at }}"
           BODY="${{ github.event.issue.body }}"
-          FRONTMATTER="
-          ---\r\n
-          layout: post\r\n
-          title: $TITLE\r\n
-          date: $DATE\r\n
-          ---\r\n
+          FRONTMATTER="---
+          layout: post
+          title: $TITLE
+          date: $DATE
+          ---
           "
           FOLDER=_posts
           printf "%b\n" "$FRONTMATTER\r\n $BODY" > ${FOLDER}/${TITLE}.md
