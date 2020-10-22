@@ -24,7 +24,7 @@ jobs:
         run: |
           TITLE=$("${{ github.event.issue.title }}")
           DATE=$("${{ github.event.issue.created_at }}")
-          BODY=$("${{ github.event.issue.body }}")
+          BODY=$(${{ github.event.issue.body }})
           FRONTMATTER="---
           layout: post
           title: $TITLE
