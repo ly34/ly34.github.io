@@ -1,6 +1,7 @@
 # https://www.freecodecamp.org/news/publishing-github-event-data-with-github-actions-and-pages/
 # https://stackoverflow.com/questions/58597010/how-to-access-a-github-issue-comment-body-using-github-actions
 # This is a basic workflow to help you get started with Actions
+# https://github.com/maguowei/iaas/blob/d48834c18b66ae0f3ae32e5e62a6811dfddadcb2/.github/workflows/iaas.yml
 
 name: issue2post
 
@@ -8,7 +9,7 @@ name: issue2post
 # events but only for the main branch
 on:
   issues:
-    types: [opened, edited, labeled]
+    types: [opened, edited]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -21,8 +22,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - name: Turn comment into file
-        run: |          
-          cat <<'EOF' > _posts/"${{ github.event.issue.title }}".md
+        run: |
+          DATE="${{ github.event.issue.created_at }}"
+          cat <<'EOF' > _posts/"${DATE:0:11}-${{ github.event.issue.title }}".md
           ---
           layout: post
           title: ${{ github.event.issue.title }}
