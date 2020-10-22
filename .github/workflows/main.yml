@@ -24,7 +24,6 @@ jobs:
         run: |
           TITLE=$("${{ github.event.issue.title }}")
           DATE=$("${{ github.event.issue.created_at }}")
-          BODY=`${{ github.event.issue.body }}`
           FRONTMATTER="---
           layout: post
           title: $TITLE
@@ -33,6 +32,9 @@ jobs:
           "
           FOLDER=_posts
           printf "%b\n" "$FRONTMATTER\r\n $BODY" > ${FOLDER}/${TITLE}.md
+          cat <<'EOF' > test.md
+          ${{ github.event.issue.body }}
+          EOF
 
       - name: Push changes to repo
         run: |
