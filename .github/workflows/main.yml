@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Turn comment into file
         run: |          
-          cat <<'EOF' > _posts/${{ github.event.issue.title }}.md
+          cat <<'EOF' > _posts/"${{ github.event.issue.title }}".md
           ---
           layout: post
           title: ${{ github.event.issue.title }}
