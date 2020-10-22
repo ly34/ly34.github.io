@@ -22,16 +22,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Turn comment into file
         run: |
-          TITLE=$("${{ github.event.issue.title }}")
-          DATE=$("${{ github.event.issue.created_at }}")
-          FRONTMATTER="---
-          layout: post
-          title: $TITLE
-          date: $DATE
-          ---
-          "
-          FOLDER=_posts
-          printf "%b\n" "$FRONTMATTER\r\n $BODY" > ${FOLDER}/${TITLE}.md
           cat <<'EOF' > test.md
           ${{ github.event.issue.body }}
           EOF
